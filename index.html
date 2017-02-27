@@ -42,21 +42,21 @@
 								</div>
 
 								<div class="form-group">
-	  								<label for="from" class="col-2 col-form-label">From:</label>
+	  								<label for="from" class="col-2 col-form-label">From (Year):</label>
 	  								<div class="col-10">
-	   									 <input class="form-control" data-date="from" type="date" id="fromDate">
+	   									 <input class="form-control" value="YYYY" data-date="from" type="text" id="fromDate">
 	  								</div>
 								</div>
 
 								<div class="form-group">
-	  								<label for="to" class="col-2 col-form-label">To:</label>
+	  								<label for="to" class="col-2 col-form-label">To (Year):</label>
 	  								<div class="col-10">
-	   									 <input class="form-control" data-date="to" type="date" id="toDate">
+	   									 <input class="form-control" value="YYYY" data-date="to" type="text" id="toDate">
 	  								</div>
 								</div>
 
-		  						<button type="submit" class="btn btn-default" id="run-search"><i class="fa fa-search"></i> Search</button>
-              					<button type="button" class="btn btn-default" id="clear-all"><i class="fa fa-trash"></i> Clear Results</button>
+		  						<button type="submit" class="btn btn-default" id="runTopic"><i class="fa fa-search"></i> Search</button>
+              					<button type="button" class="btn btn-default" id="clearAll"><i class="fa fa-trash"></i> Clear Results</button>
 		 						
 							</form>
 						</div>	
@@ -68,15 +68,18 @@
 			<div class="col-sm-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-table"></i> Most Popular</h3>
+						<h3 class="panel-title"><i class="fa fa-table"></i> Trending</h3>
 					</div>
-					<div class="panel-body" id="holdArticles"></div>
+					<div class="panel-body" id="articleSection"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 <!-- jQuery Link -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<!--JavaScript Link -->
+<script type="text/javascript" src="javascript/nyt-api.js"></script>
+
 </body>
 
 </html>
