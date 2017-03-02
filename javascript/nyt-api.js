@@ -10,6 +10,8 @@ $(document).ready(function() {
 		basicQueryURL: "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=f4b9013ebc664a5b8e3d49ae32dc7729&q=",
 		//Method that accepts two parameters and gets our data from the nyt server
 		dataResponse: function(articles, queryURL) {
+
+			var self = this;
 			//our ajax method that retrieves data from the nyt server and then gives it to us when it has fully retrieved the data
 			$.ajax({
 				url: queryURL,
@@ -22,29 +24,29 @@ $(document).ready(function() {
 				//looping through our articles parameter to display the information needed for each user request
 				for ( var i = 0; i < articles; i++) {
 					//we increase the articleCounter depending on how many articles the user wants to see
-					this.articleCounter++;
+					self.articleCounter++;
 					//create a new div and store it in a variable
 					var articleHolder = $("<div>");
 					//add a class of "holder" to the div
 					articleHolder.addClass("holder");
 					//add an id to the div of "article-holder-" + however many articles the user requested
-					articleHolder.attr("id", "article-holder-" + this.articleCounter);
+					articleHolder.attr("id", "article-holder-" + self.articleCounter);
 					//append the div to the new dynamic div to the static div in our html
 					$("#articleSection").append(articleHolder);
 					//then we set a condition and say "if" all properties of healine are not null do this
 					if ( apiData.response.docs[i].headline !== "null") {
 						//append a new html element, numbered label and healine, to the articleHolder div
-						$("#article-holder-" + this.articleCounter).append("<h3 class='eachHeadline'><span class='label label-primary'>" + this.articleCounter + "</span><strong>" + apiData.response.doc[i].headline.main + "</strong></h3>");
+						$("#article-holder-" + self.articleCounter).append("<h3 class='eachHeadline'><span class='label label-primary'>" + self.articleCounter + "</span> <strong>" + apiData.response.docs[i].headline.main + "</strong></h3>");
 					}
 					//then we add another condition saying "if" the article has byline and byline.original properties do this
 					if ( apiData.response.docs[i].byline && apiData.response.docs[i].byline.original) {
 						//append a new html element, who the article was written by, to the articleHolder div
-						$("#article-holder-" + this.articleCounter).append("<h5>By: " + apiData.response.docs[i].byline.original + "</h5>");
+						$("#article-holder-" + self.articleCounter).append("<h5>By: " + apiData.response.docs[i].byline.original + "</h5>");
 					}
 					//we then append the rest of the data we want to display to the user, source, pub date, and link, to the new articleHolder div
-					$("#article-holder-" + this.articleCounter).append("<h5>Source: " + apiData.response.docs[i].source + "</h5");
-					$("#article-holder-" + this.articleCounter).append("<h5>Published: " + apiData.response.docs[i].pub_date + "</h5>");
-					$("#article-holder-" + this.articleCounter).append("<a href='" + apiData.response.docs[i].web_url + "'>" + apiData.response.docs[i].web_url + "</a>");
+					$("#article-holder-" + self.articleCounter).append("<h5>Source: " + apiData.response.docs[i].source + "</h5");
+					$("#article-holder-" + self.articleCounter).append("<h5>Published: " + apiData.response.docs[i].pub_date + "</h5>");
+					$("#article-holder-" + self.articleCounter).append("<a href='" + apiData.response.docs[i].web_url + "'>" + apiData.response.docs[i].web_url + "</a>");
 
 
 				}
